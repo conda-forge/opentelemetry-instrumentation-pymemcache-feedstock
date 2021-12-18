@@ -1,5 +1,5 @@
 {% set name = "opentelemetry-instrumentation-pymemcache" %}
-{% set version = "0.26b1" %}
+{% set version = "0.27b0" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/opentelemetry-instrumentation-pymemcache-{{ version }}.tar.gz
-  sha256: f70667d416081cb93e64d1ecba6667324dbf52bd04e8acac77aeae53112ca7ec
+  sha256: 7a27e20a58c4c414f64d7342bc5a1e5a10fbb43d3408d81832de733a1cb5ea6c
 
 build:
   number: 0
@@ -21,8 +21,8 @@ requirements:
     - python >=3.6
   run:
     - opentelemetry-api ~=1.3
-    - opentelemetry-instrumentation ==0.26b1
-    - opentelemetry-semantic-conventions ==0.26b1
+    - opentelemetry-instrumentation ==0.27b0
+    - opentelemetry-semantic-conventions ==0.27b0
     - python >=3.6
     - wrapt <2.0.0,>=1.0.0
     # - pymemcache ~=1.3
@@ -33,6 +33,8 @@ requirements:
     # - opentelemetry-test ==0.25b1
     # - pymemcache ~=1.3
     # - opentelemetry-test-utils ==0.26b1
+    # - pymemcache ~=1.3
+    # - opentelemetry-test-utils ==0.27b0
 
 test:
   imports:
