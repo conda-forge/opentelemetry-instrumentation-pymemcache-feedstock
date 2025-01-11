@@ -7,23 +7,23 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/opentelemetry-instrumentation-pymemcache-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/opentelemetry-instrumentation-pymemcache-{{ version }}.tar.gz
   sha256: b6f906b2323e2a3de42eccf85b4c8a54c880dc2394687e17a23e7e77beb9304a
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
   run:
     - opentelemetry-api ~=1.12
     - opentelemetry-instrumentation ==0.33b0
     - opentelemetry-semantic-conventions ==0.33b0
-    - python >=3.6
+    - python >={{ python_min }}
     - wrapt <2.0.0,>=1.0.0
     # - pymemcache ~=1.3
     # - opentelemetry-test ==0.24b0
@@ -60,6 +60,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-pymemcache
