@@ -1,56 +1,30 @@
 {% set name = "opentelemetry-instrumentation-pymemcache" %}
-{% set version = "0.33b0" %}
-
+{% set version = "0.50b0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/opentelemetry-instrumentation-pymemcache-{{ version }}.tar.gz
-  sha256: b6f906b2323e2a3de42eccf85b4c8a54c880dc2394687e17a23e7e77beb9304a
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/opentelemetry_instrumentation_pymemcache-{{ version }}.tar.gz
+  sha256: 510cc11ed86d949964a4fae41757ba2ff0f209ac6b05b4a250cc09ee74276c59
 
 build:
-  number: 1
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
 
 requirements:
   host:
-    - pip
     - python {{ python_min }}
+    - hatchling
+    - pip
   run:
-    - opentelemetry-api ~=1.12
-    - opentelemetry-instrumentation ==0.33b0
-    - opentelemetry-semantic-conventions ==0.33b0
     - python >={{ python_min }}
-    - wrapt <2.0.0,>=1.0.0
-    # - pymemcache ~=1.3
-    # - opentelemetry-test ==0.24b0
-    # - pymemcache ~=1.3
-    # - opentelemetry-test ==0.25b0
-    # - pymemcache ~=1.3
-    # - opentelemetry-test ==0.25b1
-    # - pymemcache ~=1.3
-    # - opentelemetry-test-utils ==0.26b1
-    # - pymemcache ~=1.3
-    # - opentelemetry-test-utils ==0.27b0
-    # - pymemcache ~=1.3
-    # - opentelemetry-test-utils ==0.28b0
-    # - pymemcache ~=1.3
-    # - opentelemetry-test-utils ==0.28b1
-    # - pymemcache ~=1.3
-    # - opentelemetry-test-utils ==0.29b0
-    # - pymemcache <4,>=1.3.5
-    # - opentelemetry-test-utils ==0.30b0
-    # - pymemcache <4,>=1.3.5
-    # - opentelemetry-test-utils ==0.30b1
-    # - pymemcache <4,>=1.3.5
-    # - opentelemetry-test-utils ==0.31b0
-    # - pymemcache <4,>=1.3.5
-    # - opentelemetry-test-utils ==0.32b0
-    # - pymemcache <4,>=1.3.5
-    # - opentelemetry-test-utils ==0.33b0
+    - opentelemetry-api >=1.12,<2.dev0
+    - opentelemetry-instrumentation ==0.50b0
+    - opentelemetry-semantic-conventions ==0.50b0
+    - wrapt >=1.0.0,<2.0.0
 
 test:
   imports:
@@ -60,7 +34,7 @@ test:
     - pip check
   requires:
     - pip
-    - python {{ python_min }}
+    - oython {{ python_min }}
 
 about:
   home: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-pymemcache
