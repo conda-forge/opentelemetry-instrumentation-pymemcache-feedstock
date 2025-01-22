@@ -34,7 +34,7 @@ test:
     - pip check
   requires:
     - pip
-    - oython {{ python_min }}
+    - python {{ python_min }}
 
 about:
   home: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-pymemcache
